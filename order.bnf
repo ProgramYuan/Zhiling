@@ -1,0 +1,37 @@
+#BNF+IAT 1.0 UTF-8;
+!grammar order;
+!slot <verb>;
+!slot <obj>;
+!slot <place>;
+!slot <ba>;
+!slot <clock>;
+!slot <timeAft>;
+!slot <clockPre>;
+!slot <hourmin>;
+!slot <hou>;
+!slot <kuari>;
+
+
+!start <Start>;
+<Start>:<start0> | <start1> | <start2> | <start3>;
+
+<start0>:<verb><obj>;
+<verb>:开|打开|关|关闭|启动|关上;
+<obj>:空调|电视机|电视;
+<place>:房间|房间的|客厅|客厅的|大厅|大厅的|卧室|卧室的;
+
+<start1>:<verb>[<place>]<obj>;
+
+<start2>:<ba>[<place>]<obj><verb>;
+<ba>:把|将;
+
+<start3>:[<time>][<time1>][<time2>]<verb>[<place>]<obj>;
+<time>:[<clockPre>]<clock><timeAft>;
+<time1>:<clock><hourmin><hou>;
+<time2>:<kuari><time>;
+<kuari>:明天|后天;
+<clockPre>:凌晨|早上|上午|中午|下午|晚上|夜里;
+<clock>:一|二|三|四|五|六|七|八|九|十|十一|十二;
+<timeAft>:点;
+<hourmin>:小时|分钟;
+<hou>:后;

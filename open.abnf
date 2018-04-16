@@ -1,0 +1,32 @@
+#ABNF 1.0 GB2312;
+language zh-CN;
+mode voice;
+
+root $main;
+$main = $Rule0 | $Rule1 | $Rule2 | $Rule4;
+
+$Rule0=$behavior [$area] $device;
+$Rule1=(把|将) [$area] $device $behavior;
+$Rule2=[$Rule3Sub0] [$Rule3Sub1] [$Rule3Sub2] $behavior [$area] $device;
+
+$Rule3Sub0=[$datetime] $number0 点;
+$Rule3Sub1=$number0 $timeModify (后|之后);
+$Rule3Sub2=$date $Rule3Sub0;
+
+$behavior = 开|打开|关|关闭|启动|关上|调到|调成|开到|开成;
+$device = 空调|电视|电视机|电灯|灯|洗衣机|电冰箱|冰箱;
+$area=房间|房间的|客厅|客厅的|大厅|大厅的|卧室|卧室的|厨房|厨房的|阳台|阳台的;
+$date=明天|后天;
+$datetime=凌晨|早上|上午|中午|下午|晚上|夜里;
+$number0=一|二|三|四|五|六|七|八|九|十|十一|十二;
+$number1=十三|十四|十五|十六|十七|十八|十九|二十|二十一|二十二|二十三|二十四;
+$number2=二十五|二十六|二十七|二十八|二十九|三十|三十一|三十二|三十三|三十四|三十五|三十六|三十七|三十八|三十九|四十|四十一|四十二|四十三|四十四|四十五|四十六|四十七|四十八|四十九|五十|五十一|五十二|五十三|五十四|五十五|五十六|五十七|五十八|五十九|六十;
+$timeModify=小时|分钟|秒;
+
+$Rule4=[$Rule4Sub0|$Rule4Sub1](把)$device $behavior $Rule4Sub2;
+$Rule4Sub0=[在] $number0 (点)[(半)](的时候);
+$Rule4Sub1=$number0 (小时|分钟|秒) (后|之后);
+$Rule4Sub2=[$number0|$number1|$number2](度)|(抽湿|暖气|空气净化|暖风|制热|送风|自动|制冷);
+
+
+
